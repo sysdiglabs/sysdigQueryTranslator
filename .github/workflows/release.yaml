@@ -1,7 +1,9 @@
 name: Release translator
 on:
-  release:
-    types: [ released ]
+  push:
+    tags:
+      - '*'
+
 jobs:
   build:
     name: Build
