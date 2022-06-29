@@ -1,0 +1,15 @@
+name: Release integrations manager
+on:
+  release:
+    types: [ released ]
+jobs:
+  build:
+    name: Build
+    steps:
+      - name: Build resources
+        run: |
+          make build
+      - uses: AButler/upload-release-assets@v2.0
+        with:
+          files: 'library/*'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
