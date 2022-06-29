@@ -18,3 +18,4 @@ jobs:
           file: library/*
           tag: ${{ github.ref }}
           overwrite: true
+          file_glob: true
