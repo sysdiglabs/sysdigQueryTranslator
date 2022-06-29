@@ -11,7 +11,10 @@ jobs:
       - name: Build resources
         run: |
           make build
-      - uses: AButler/upload-release-assets@v2.0
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          files: 'library/*'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: library/*
+          tag: ${{ github.ref }}
+          overwrite: true
