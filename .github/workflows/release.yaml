@@ -1,4 +1,4 @@
-name: Release integrations manager
+name: Release translator
 on:
   release:
     types: [ released ]
