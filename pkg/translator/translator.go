@@ -8,13 +8,13 @@ func RemoveSysdigLabels(expr, excludeScope string) string {
 	if excludeScope != "" {
 		scope = scope + "|" + excludeScope
 	}
-	regex := regexp.MustCompile("(?:" + scope + ")" + "(?:=|=~|!=|!~)\\$[\\w_]*,")
+	regex := regexp.MustCompile("(?:" + scope + ")" + "\\s*(?:=|=~|!=|!~)\\$[\\w_]*,")
 	expr = regex.ReplaceAllString(expr, "")
-	regex = regexp.MustCompile("(?:" + scope + ")" + "(?:=|=~|!=|!~)\"\",")
+	regex = regexp.MustCompile("(?:" + scope + ")" + "\\s*(?:=|=~|!=|!~)\"[\\w_-]*\",")
 	expr = regex.ReplaceAllString(expr, "")
-	regex = regexp.MustCompile("(?:" + scope + ")" + "(?:=|=~|!=|!~)\\$[\\w_]*\\}")
+	regex = regexp.MustCompile("(?:" + scope + ")" + "\\s*(?:=|=~|!=|!~)\\$[\\w_]*\\}")
 	expr = regex.ReplaceAllString(expr, "}")
-	regex = regexp.MustCompile("(?:" + scope + ")" + "(?:=|=~|!=|!~)\"\"}")
+	regex = regexp.MustCompile("(?:" + scope + ")" + "\\s*(?:=|=~|!=|!~)\"[\\w_-]*\"}")
 	expr = regex.ReplaceAllString(expr, "}")
 	// Remove the sysdig aggregation
 	aggregation := "kube_cluster_name|kube_namespace_name|kube_pod_name|kube_workload_name|kube_node_name|agent_tag_cluster"
