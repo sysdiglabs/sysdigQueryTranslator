@@ -1,10 +1,10 @@
 PACKAGE_NAME          := github.com/sysdiglabs/sysdigQueryTranslator
 
-all: build lint
+all: build
 
 build:
 	@echo "Building..."
-	go build -buildmode c-shared -o library/translator.so cmd/translator.go
+	go build -buildmode c-shared -o library/translator.so translator.go
 	@echo "Building...done"
 
 cross-build:
