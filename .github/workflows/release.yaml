@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Build resources
         run: |
-          make build
+          make cross-build
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
