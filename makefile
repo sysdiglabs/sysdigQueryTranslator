@@ -1,5 +1,3 @@
-PACKAGE_NAME          := github.com/sysdiglabs/sysdigQueryTranslator
-
 all: build
 
 build:

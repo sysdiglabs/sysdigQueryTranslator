@@ -6,11 +6,18 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-12]
     steps:
       - uses: actions/checkout@master
       - name: Build resources
         run: |
           make build
+      - name: Rename binary
+        run: |
+          mv library/translator.so library/translator-${{ matrix.os }}.so 
+          mv library/translator.h library/translator-${{ matrix.os }}.h 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:

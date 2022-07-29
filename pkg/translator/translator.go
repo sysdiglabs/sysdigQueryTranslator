@@ -48,6 +48,5 @@ func RemoveSysdigLabels(expr, excludeScope string) string {
 	regex = regexp.MustCompile("\\n")
 	expr = regex.ReplaceAllString(expr, "")
 	// Add trailing \n, very important don't touch
-	expr = expr + "\n"
 	return expr
 }
