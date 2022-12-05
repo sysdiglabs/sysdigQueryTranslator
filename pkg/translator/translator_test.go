@@ -15,7 +15,7 @@ var _ = Describe("Config", func() {
 		})
 		It("Remove all scopes", func() {
 			originalText := "irate(elasticsearch_indices_store_throttle_time_seconds_total{kube_cluster_name=$k8s_cluster,cluster=~$es_cluster, host=~$node,kube_namespace_name=~$namespace, kube_workload_name=~$workload}[$__interval]) "
-			expectedText := "irate(elasticsearch_indices_store_throttle_time_seconds_total{ }[$__interval]) "
+			expectedText := "irate(elasticsearch_indices_store_throttle_time_seconds_total{  }[$__interval]) "
 			processedText := RemoveAllScopes(originalText, "all")
 			Expect(expectedText).To(Equal(processedText))
 		})
