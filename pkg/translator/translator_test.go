@@ -27,7 +27,7 @@ var _ = Describe("Config", func() {
 		})
 		It("Remove $__scope", func() {
 			originalText := "irate(elasticsearch_indices_store_throttle_time_seconds_total{$__scope, kube_cluster_name=$k8s_cluster}[$__interval])"
-			expectedText := "irate(elasticsearch_indices_store_throttle_time_seconds_total[5m]) "
+			expectedText := "irate(elasticsearch_indices_store_throttle_time_seconds_total[5m])"
 			processedText := RemoveSysdigLabels(originalText, "")
 			Expect(expectedText).To(Equal(processedText))
 		})
