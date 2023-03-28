@@ -19,6 +19,9 @@ func RemoveSysdigLabels(expr, excludeScope string) string {
 	aggregation = aggregation + "|" + excludeScope
 	regex = regexp.MustCompile("(?:" + aggregation + ")")
 	expr = regex.ReplaceAllString(expr, "")
+	// Remove $__scope
+	regex = regexp.MustCompile("\\$__scope")
+	expr = regex.ReplaceAllString(expr, "")
 	// Remove extra commas
 	regex = regexp.MustCompile("(?:,+)(?:\\s*)(?:,+)")
 	expr = regex.ReplaceAllString(expr, ",")
